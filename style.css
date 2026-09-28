@@ -1,7 +1,8 @@
 /* customizable snowflake styling */
 .loader button {
-    width: 50%;
-    height: 100px;
+    width: min(86%, 560px);
+    min-height: 100px;
+    padding: 18px 28px;
     position: fixed;
     left: 50%;
     top: 45%;
@@ -9,7 +10,7 @@
     transform: translateX(-50%);
     background: center no-repeat #fff;
     z-index: 9999999999999999999999;
-    font-size: 50px;
+    font-size: clamp(24px, 5vw, 50px);
     outline: none;
     box-sizing: border-box;
     border: none;
@@ -60,6 +61,7 @@
 
 body {
     background-color: #FFDAB9;
+    overflow-x: hidden;
 }
 
 img {
@@ -75,9 +77,9 @@ img {
 
 .area {
     text-align: center;
-    font-size: 70px;
+    font-size: clamp(44px, 10vw, 70px);
     color: #C4515C;
-    letter-spacing: -7px;
+    letter-spacing: -0.06em;
     font-weight: 700;
     text-transform: uppercase;
     animation: spin 2s ease-out infinite;
@@ -115,7 +117,8 @@ img {
 }
 
 .type-wrap {
-    font-size: 25px;
+    min-height: 90px;
+    font-size: clamp(19px, 4vw, 25px);
     color: #C4515C;
 
 }
@@ -126,4 +129,20 @@ img {
     left: 50%;
     position: absolute;
     padding-top: 250px;
+}
+
+@media (max-width: 576px) {
+    .cake {
+        padding-top: 190px;
+    }
+
+    .balloon-border {
+        opacity: 0.7;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .area {
+        animation: none;
+    }
 }
