@@ -1,58 +1,157 @@
-/* customizable snowflake styling */
-.loader button {
-    width: min(86%, 560px);
-    min-height: 100px;
-    padding: 18px 28px;
-    position: fixed;
-    left: 50%;
-    top: 45%;
-    transform: translateY(-50%);
-    transform: translateX(-50%);
-    background: center no-repeat #fff;
-    z-index: 9999999999999999999999;
-    font-size: clamp(24px, 5vw, 50px);
-    outline: none;
-    box-sizing: border-box;
-    border: none;
-    border-radius: .3em;
-    text-transform: uppercase;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(110, 80, 20, .4),
-        inset 0 -2px 5px 1px rgba(139, 66, 8, 1),
-        inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
-    background-image: linear-gradient(160deg, #a54e07, #b47e11, #fef1a2, #bc881b, #a54e07);
-    border: 1px solid #a55d07;
-    color: rgb(120, 50, 5);
-    text-shadow: 0 2px 2px rgba(250, 227, 133, 1);
-    cursor: pointer;
-    transition: all .2s ease-in-out;
-    background-size: 100% 100%;
-    background-position: center;
-}
-
-.golden-btn:focus,
-.golden-btn:hover {
-    background-size: 150% 150%;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23),
-        inset 0 -2px 5px 1px #b17d10,
-        inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
-    border: 1px solid rgba(165, 93, 7, .6);
-    color: rgba(120, 50, 5, .8);
-}
-
-.golden-btn:active {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(110, 80, 20, .4),
-        inset 0 -2px 5px 1px #b17d10,
-        inset 0 -1px 1px 3px rgba(250, 227, 133, 1);
-}
-
 .loader {
     position: fixed;
-    left: 0px;
-    top: 0px;
+    inset: 0;
     width: 100%;
-    height: 100%;
-    z-index: 999;
-    background: url(img/back.png) center no-repeat #000;
+    min-height: 100svh;
+    z-index: 999999;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 24px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, .55) 0 4px, transparent 5px),
+        radial-gradient(circle at 82% 25%, rgba(255, 255, 255, .4) 0 6px, transparent 7px),
+        radial-gradient(circle at 72% 80%, rgba(255, 255, 255, .35) 0 5px, transparent 6px),
+        linear-gradient(145deg, #ff8eb5 0%, #b48cff 52%, #6f8dff 100%);
+}
+
+.loader::before,
+.loader::after {
+    content: "";
+    position: absolute;
+    width: min(58vw, 420px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(2px);
+    opacity: .3;
+    animation: float-orb 7s ease-in-out infinite;
+}
+
+.loader::before {
+    top: -18%;
+    left: -14%;
+    background: #ffd566;
+}
+
+.loader::after {
+    right: -18%;
+    bottom: -22%;
+    background: #ff5b8f;
+    animation-delay: -3.5s;
+}
+
+.welcome-card {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 540px);
+    padding: clamp(34px, 8vw, 64px) clamp(22px, 7vw, 54px);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .42);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, .14);
+    box-shadow: 0 24px 70px rgba(71, 35, 126, .24);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    animation: card-arrive .75s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.welcome-kicker,
+.welcome-note,
+.sound-note {
+    margin: 0;
+}
+
+.welcome-kicker {
+    font-size: clamp(14px, 3.5vw, 17px);
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    opacity: .9;
+}
+
+.welcome-card h1 {
+    margin: 8px 0 12px;
+    font-size: clamp(52px, 14vw, 84px);
+    font-weight: 800;
+    line-height: .98;
+    letter-spacing: -.055em;
+    text-shadow: 0 8px 30px rgba(91, 35, 130, .25);
+}
+
+.welcome-note {
+    font-size: clamp(17px, 4vw, 21px);
+    line-height: 1.5;
+    opacity: .92;
+}
+
+.loader button {
+    position: relative;
+    isolation: isolate;
+    width: min(100%, 330px);
+    min-height: 64px;
+    margin: 34px auto 14px;
+    padding: 16px 26px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 14px 34px rgba(69, 32, 122, .28), 0 0 0 0 rgba(255, 255, 255, .55);
+    color: #7c3dc7;
+    cursor: pointer;
+    font: inherit;
+    font-size: clamp(17px, 4vw, 20px);
+    font-weight: 800;
+    letter-spacing: .01em;
+    animation: button-pulse 2.2s ease-in-out infinite;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.loader button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    transform: translateX(-120%) skewX(-18deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 176, 220, .7), transparent);
+    animation: button-shine 2.8s ease-in-out infinite;
+}
+
+.loader button:hover,
+.loader button:focus-visible {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(69, 32, 122, .34);
+    outline: 3px solid rgba(255, 255, 255, .6);
+    outline-offset: 4px;
+}
+
+.loader button:active {
+    transform: translateY(0) scale(.98);
+}
+
+.sound-note {
+    font-size: 13px;
+    opacity: .72;
+}
+
+@keyframes card-arrive {
+    from { opacity: 0; transform: translateY(22px) scale(.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes button-pulse {
+    0%, 100% { box-shadow: 0 14px 34px rgba(69, 32, 122, .28), 0 0 0 0 rgba(255, 255, 255, .5); }
+    50% { box-shadow: 0 16px 38px rgba(69, 32, 122, .32), 0 0 0 10px rgba(255, 255, 255, 0); }
+}
+
+@keyframes button-shine {
+    0%, 45% { transform: translateX(-120%) skewX(-18deg); }
+    70%, 100% { transform: translateX(120%) skewX(-18deg); }
+}
+
+@keyframes float-orb {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(12px, 20px, 0); }
 }
 
 .song {
@@ -132,6 +231,14 @@ img {
 }
 
 @media (max-width: 576px) {
+    .loader {
+        padding: 18px;
+    }
+
+    .welcome-card {
+        border-radius: 26px;
+    }
+
     .cake {
         padding-top: 190px;
     }
@@ -142,7 +249,12 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .area {
+    .area,
+    .welcome-card,
+    .loader::before,
+    .loader::after,
+    .loader button,
+    .loader button::before {
         animation: none;
     }
 }
